@@ -1,0 +1,23 @@
+/* ----------------------- */
+Core-Login Instrument
+
+You've just installed the core-login.instrument into your orchestra application, following installation you need to run:
+
+$  php script/db migrate
+
+Next you need to create a user account, to do so open your application and point the browser to "/user/new_item" from this admin you can create your account. Now that you've created you account, you need to add the authorization method to your ApplicationControllers.
+
+Place this, after your last method in app/controllers/application_controller.php
+
+  public function authorize() {
+  	global $helpers;
+  	if(!isset($_SESSION['user_id'])) {
+  		$this->redirect_to('login', array('page' => 'index'));
+  	}
+  }
+
+Now in any of your controllers you can add:
+
+  $this->authorize();
+
+to require authorization.

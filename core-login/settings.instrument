@@ -1,0 +1,50 @@
+<?php
+/**
+* Orchestra Settings
+*
+* Used for filing on the OrchestraMVC website.
+*
+* Licensed under the MIT license.
+*
+* @category   Orchestra
+* @copyright  Copyright (c) 2010, Christopher Hein
+* @license    http://orchestramvc.chrishe.in/license
+* @version    Release: 0.0.1:beta
+* @link       http://orchestramvc.chrishe.in/
+*
+*/
+
+$instrument = array(
+	'title' 				=> 'core-login',
+	'teaser'				=> 'Adding an admin to your orchestra application',
+	'description'		=> 'This instrument adds a full login system, to your app, and adds a global function $this->authorize(); to remove access to any area in you application, in a split second.'
+	'category'			=> 'builder',
+	'copyright'			=> 'Christopher Hein',
+	'license'				=> 'MIT',
+	'version'				=> '0.0.1',
+	'link'					=> 'http://orchestramvc.chrishe.in/instruments/core-login',
+	'author'				=> 'Christopher Hein',
+	'author-link'		=> 'http://chrishe.in',
+	'author-email'	=> 'me@chrishe.in'
+	'files'					=> array(
+												'README',
+												'install',
+												'core-login.php',
+												'settings.instrument',
+												'./docs/core-login.html',
+												'./files/create_users.php',
+												'./files/sessions/login.html.orc',
+												'./files/sessions_controller.php',
+												'./files/sessions_helper.php',
+												'./files/sessions.php',
+												'./files/users/_form.html.orc',
+												'./files/users/edit.html.orc',
+												'./files/users/index.html.orc',
+												'./files/users/new_item.html.orc',
+												'./files/users/show.html.orc',
+												'./files/users_controller.php',
+												'./files/users_helper.php',
+												'./files/users.php',
+												'./images/',
+											)
+);

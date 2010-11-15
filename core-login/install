@@ -1,0 +1,179 @@
+#!/usr/bin/php
+<?php
+/**
+* Orchestra Core-Login 
+*
+* Intall script this is run from the cmd line to fully install this module into your orchestra application.
+*
+* Licensed under the MIT license.
+*
+* @category   Orchestra
+* @copyright  Copyright (c) 2010, Christopher Hein
+* @license    http://orchestramvc.chrishe.in/license
+* @version    Release: 0.0.1:beta
+* @link       http://orchestramvc.chrishe.in/
+*
+*/
+
+$path = getcwd();
+$name = "core-login";
+$controller = "/app/controllers/";
+$helpers = "/app/helpers/";
+$models = "/app/models/";
+$views = "/app/views/";
+$migration = "/db/migrate/";
+$routes = $path."/config/routes.php";
+$files = array(
+	'create_users.php',
+	'sessions/login.html.orc',
+	'sessions_controller.php',
+	'sessions_helper.php',
+	'sessions.php',
+	'users/_form.html.orc',
+	'users/edit.html.orc',
+	'users/index.html.orc',
+	'users/new_item.html.orc',
+	'users/show.html.orc',
+	'users_controller.php',
+	'users_helper.php',
+	'users.php'
+);
+
+	// Variables
+if($argv[1] == "play") {
+	echo "\n Initalize Core-Login Instrument \n";
+	
+	copy($path."/instruments/".$name."/files/".$files['0'], $path.$migration.$files['0']);
+	echo "CREATED :: ".$files['0']."\n";
+	
+	mkdir($path.$views."sessions");
+	echo "CREATED :: sessions/ \n";
+	
+	copy($path."/instruments/".$name."/files/".$files['1'], $path.$views.$files['1']);
+	echo "CREATED :: ".$files['1']."\n";
+	
+	copy($path."/instruments/".$name."/files/".$files['2'], $path.$controller.$files['2']);
+	echo "CREATED :: ".$files['2']."\n";
+	
+	copy($path."/instruments/".$name."/files/".$files['3'], $path.$helpers.$files['3']);
+	echo "CREATED :: ".$files['3']."\n";
+	
+	copy($path."/instruments/".$name."/files/".$files['4'], $path.$models.$files['4']);
+	echo "CREATED :: ".$files['4']."\n";
+	
+	mkdir($path.$views."users");
+	echo "CREATED :: users/ \n";
+	
+	copy($path."/instruments/".$name."/files/".$files['5'], $path.$views.$files['5']);
+	echo "CREATED :: ".$files['5']."\n";
+	
+	copy($path."/instruments/".$name."/files/".$files['6'], $path.$views.$files['6']);
+	echo "CREATED :: ".$files['6']."\n";
+	
+	copy($path."/instruments/".$name."/files/".$files['7'], $path.$views.$files['7']);
+	echo "CREATED :: ".$files['7']."\n";
+	
+	copy($path."/instruments/".$name."/files/".$files['8'], $path.$views.$files['8']);
+	echo "CREATED :: ".$files['8']."\n";
+	
+	copy($path."/instruments/".$name."/files/".$files['9'], $path.$views.$files['9']);
+	echo "CREATED :: ".$files['9']."\n";
+	
+	copy($path."/instruments/".$name."/files/".$files['10'], $path.$controller.$files['10']);
+	echo "CREATED :: ".$files['10']."\n";
+	
+	copy($path."/instruments/".$name."/files/".$files['11'], $path.$helpers.$files['11']);
+	echo "CREATED :: ".$files['11']."\n";
+	
+	copy($path."/instruments/".$name."/files/".$files['12'], $path.$models.$files['12']);
+	echo "CREATED :: ".$files['12']."\n";
+	
+	
+	$route_open = fopen($routes, 'a');
+	$route_data = '
+	// Users
+$pages["users"] = array( 
+	 "url"         	=> "/users/index", 
+	 "controller"		=> "users", 
+	 "action"      	=> "index", 
+); 
+
+$pages["users/$id"] = array( 
+	 "url"         	=> "/users/show", 
+	 "controller"		=> "users", 
+	 "action"      	=> "show", 
+); 
+
+$pages["users/new_item"] = array(
+	 "url"         	=> "/users/new", 
+	 "controller"		=> "users", 
+	 "action"      	=> "new",
+);
+
+$pages["users/create"] = array( 
+	 "url"         	=> "/users/create", 
+	 "controller"		=> "users", 
+	 "action"      	=> "create", 
+); 
+
+$pages["users/$id/edit"] = array( 
+	 "url"         	=> "/users/edit", 
+	 "controller"		=> "users", 
+	 "action"      	=> "edit", 
+); 
+
+$pages["users/update"] = array( 
+	 "url"         	=> "/users/update", 
+	 "controller"		=> "users", 
+	 "action"      	=> "update", 
+);
+
+$pages["users/$id/destroy"] = array( 
+	 "url"         	=> "/users/destroy", 
+	 "controller"		=> "users", 
+	 "action"      	=> "destroy", 
+);			
+
+
+	// Sessions
+$pages["login"] = array( 
+	 "url"         	=> "/sessions/login", 
+	 "controller"		=> "sessions", 
+	 "action"      	=> "login", 
+); 
+
+$pages["sessions/create"] = array( 
+	 "url"         	=> "/sessions/create", 
+	 "controller"		=> "sessions", 
+	 "action"      	=> "create", 
+); 
+
+$pages["logout"] = array( 
+	 "url"         	=> "/sessions/destroy", 
+	 "controller"		=> "sessions", 
+	 "action"      	=> "destroy", 
+); 
+
+	// Login
+$pages["admin"] = array( 
+	 "url"         	=> "/admin/index", 
+	 "controller"		=> "admin", 
+	 "action"      	=> "index", 
+);';
+	$route_write = fwrite($route_open, $route_data);
+	$route_close = fclose($route_open);
+	echo "\n\t EDITED :: config/routes.php";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

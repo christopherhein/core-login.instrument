@@ -1,12 +1,29 @@
-/* ----------------------- */
+--------------------------------------
+
 Core-Login Instrument
 
 You've just installed the core-login.instrument into your orchestra application, following installation you need to run:
 
-$  php script/db migrate
+  $  php script/db migrate
 
-Next you need to create a user account, to do so open your application and point the browser to "/user/new_item" from this admin you can create your account. Now that you've created you account, you need to add the authorization method to your ApplicationControllers.
+Next you need to create a user account to do so:
 
+  1) Open app/controllers/users_controller.php
+  
+  2) Comment out "$this->authorize();"
+      Your before_filter method should look like this:
+      
+      public function before_filter() {
+        // $this->authorize();
+      }
+  
+  3) Point your browser to "/user/new_item"
+  
+  4) Create account.
+  
+  5) Uncomment "$this-authorize();"
+  
+  
 Place this, after your last method in app/controllers/application_controller.php
 
   public function authorize() {
@@ -16,8 +33,14 @@ Place this, after your last method in app/controllers/application_controller.php
   	}
   }
 
-Now in any of your controllers you can add:
+To add a requirement for authorization to any of your pages use this inside the controllers method:
 
   $this->authorize();
+  
+Last thing you should do is generate an admin controller:
+  
+  1) $ php script/generate controller admin index
 
-to require authorization.
+Enjoy!
+
+--------------------------------------

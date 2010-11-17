@@ -17,8 +17,8 @@
 $instrument = array(
 	'title' 				=> 'core-login',
 	'teaser'				=> 'Adding an admin to your orchestra application',
-	'description'		=> 'This instrument adds a full login system, to your app, and adds a global function $this->authorize(); to remove access to any area in you application, in a split second.'
-	'category'			=> 'builder',
+	'description'		=> 'This instrument adds a full login system, to your app, and adds a global function $this->authorize(); to restrict access to any area in you application, in a split second.'
+	'category'			=> 'login',
 	'copyright'			=> 'Christopher Hein',
 	'license'				=> 'MIT',
 	'version'				=> '0.0.1',

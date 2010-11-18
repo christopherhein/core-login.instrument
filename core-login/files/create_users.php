@@ -7,7 +7,9 @@ class CreateUsers {
 	
 	public function self_up() {
 		$query = array(
-			'string => name','string => hashed_password','string => salt'
+			'string => name',
+			'string => hashed_password',
+			'string => salt'
 		);
 		$db = new Database();
 		$db->up('users', $query);
